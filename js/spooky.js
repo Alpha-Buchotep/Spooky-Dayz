@@ -1,11 +1,11 @@
 // ------------------------------------------
 // SpOoKy Dayz Trainer - by Jonastos (nCore)
 // ------------------------------------------
-// Frissítve: 2024-01-03
-// Verzió: 1.0.3.0
+// Frissítve: 2026-10-29
+// Verzió: 1.0.6.0
 // ------------------------------------------
-// 179 db SpOoKy figura
-// 234 db különböző szöveg
+// 268 db SpOoKy figura
+// 233 db különböző szöveg
 // 6 db képes háttér + 7 db nCore téma háttér
 // ------------------------------------------
 
@@ -13,7 +13,7 @@
 // Globális változók
 // -----------------------------
 
-var verzio = "1.0.3.0";
+var verzio = "1.0.6.0";
 
 // -----------------------------
 // Böngésző helyi tároló
@@ -34,8 +34,9 @@ var autoSpookyIdo;
 
 // -------------------------------------------------------
 // Minimum ennyi idő után jelenik meg Spooky (másodperc!)
+// Ne vegyük 30 másodperc alá!
 // -------------------------------------------------------
-var defSpookyMinIdo = 55;
+var defSpookyMinIdo = 45;
 
 // -------------------------------------------------------
 // Maximum ennyi idő után jelenik meg Spooky (másodperc!)
@@ -107,17 +108,13 @@ var spookySzovegek = [
 "A szellemek meg akartak ijeszteni, de a pároddal találkoztak először, így ők ijedtek csak meg igazán. Kapásból el is vittek magukkal 68 pontot.",
 "Illuminált lopótökkel csevegtél, aki közben lenyúlta 22 pontodat.",
 "Nem vetted észre, hogy a viharos szél lefújta az ársapkát a 95-ös benzinről, miközben a seprűdet tankoltad. Ez 40 pontodba fog kerülni.",
-"A Vérvári Vámpírpagodában sikerrel beüzemelted az első szénsavas vér üdítőautomatát. A próbaüzem során a gép elkezdett füstölögni, mire te lehajoltál alá és találtál 236 pontot.",
 "A rémségek a villanyszámlád láttán megijedtek, kárpótlásul otthagytak nálad 80 pontot.",
 "Mivel évről-évre kitartóan védelmezed a trackert, így szeretnénk meghálálni neked a munkádat, 2 torrented lekerül a seedkötelezett listáról.",
-"Megidéztél egy szellemet, aki sajnos ellened fordult, és elvette 71 pontodat.",
 "Megláttátok a szomszéd lányt meztelenül tököt faragni a nappaliban és te rögtön eltakartad az öcséd szemét, ezért jóváírunk 263 pontot.",
 "Újonnan regisztráltál a TikTök közösségi felületre és lett is négy új követőd, bár nem az alkalmazásban, hanem egy szűk sikátorban, amin éppen áthaladsz. 66 pontot loptak el tőled a követőid.",
 "Hazafelé tartva elbambultál, és majdnem elsodort Hamupipőke tökhintója. A nagy ijedtségben elejtettél 98 pontot.",
 "Mindenki másnál több gonosz lényt vadásztál le! Elismerésül kapsz tőlünk 66 pontot.",
-"Tökpálinkával kínáltad a Halloweenkor kopogtató gyerekeket, büntetésül 6 perccel tovább kell seedelned a torrentjeidet.",
 "A rémek álarcosbálján első helyet nyertél. Mikor kiderült, hogy elfelejtetted felvenni a jelmezed, a bizottság úgy döntött 3 perccel tovább kell seedelned torrentjeid.",
-"Megidézted volna Halloween Szellemét, de a varázsszöveg latinul van, így előbb meg kell tanulnod a régi nyelvet. A latinórák 39 pontodba kerülnek.",
 "Becsengettél egy házba de pechedre Addamsék nyitottak ajtót. Ijedtedben futásnak eredtél, de a nagy sietségben elhagytál 86 pontot.",
 "Részegen Troll balettet jártál a tündérbálban, ezért 3 perccel tovább kell seedelned a torrentjeidet.",
 "Miután a kriptában bujkáló vámpírt észrevetted, denevérré alakult és elrepült. Viszont hagyott a koporsójában 85 pontot.",
@@ -132,7 +129,6 @@ var spookySzovegek = [
 "Miután rutinosan megtetted a cukorkagyűjtögető utadat, és elkezdted átnézni az édességzsákmányodat, észrevetted, hogy valaki cukorka helyett 113 pontot adott neked.",
 "Egy gonosz álommanó álomport szórt rád, így egy csomó figuráról lemaradtál. Kárpótlásul kapsz 84 pontot.",
 "Betévedtél az elvarázsolt kastélyba és megtaláltad a titkos szobát tele kincsekkel, jutalmad 264 pont!",
-"A temetőben megtisztítottál egy elhagyatott sírkövet. A szellem, aki ott nyugszik jutalmul eltüntette 2 seedköteles torrentedet!",
 "Tökfalván lopáson kaptál egy vámpírt, ezért a helyi lakosok 216 pontot ajándékoztak neked.",
 "Mivel idén nem volt kedved halloweenezni és tönkretetted a szomszéd töklámpásait, ezért 22 perccel tovább kell seedelned a torrentjeidet.",
 "Elhibáztad a This is Halloween szövegét a Rögtönzött Rémkórusban, büntetésül 19 perccel tovább kell seedelned a torrentjeidet.",
@@ -189,6 +185,7 @@ var spookySzovegek = [
 "Az ősz beköszöntével ismét elkaptad a szezonális influenzát és taknyod-nyálad összefolyt. Az egyik orrfújás alkalmából 2 seedkötelezett torrent is távozott belőled.",
 "Az új magyar streaming szolgáltatón, a Nerflixen előfizettél, hogy megnézd a Lopott idő című filmet. Megtekintése után 27 perccel csökkent a seedkötelezett torrentjeid hátralévő ideje.",
 "Becsöngettél az Addams családhoz, de senki sem nyitott ajtót. Már épp menni készültél, amikor véletlenül észrevetted, hogy a lábtörlő alatt hever 177 pont. Gyorsan felvetted és zsebre raktad.",
+"Madzsar-Mandel Péter Tiszaros gatyában próbálta elvenni az ájfonod, de visszavágtál, és elvetted a diákhiteles időkből sikkasztott megtakarításait.",
 "Bedőltél egy \"Szia Uram!\"-mal köszönő üzletembernek és 68 ponttal kevesebbel távoztál.",
 "Bementél az Országház egyik rejtélyes alagsori termébe, ahol sikerül elcsenned 28 pontot az elveszett adományládikók fosztogatóitól.",
 "Bementél egy elhagyatott rémségektől teli templomba. Egy szellem elkezdett magával vonszolni, de szerencsére sikerült megfognod az Isten lábát, aki kimenekített a bajból, és jutalmul adott neked 131 pontot.",
@@ -262,6 +259,7 @@ var spookySzovegek = [
 "Rakodás közben ráesett a nagylábujjadra egy tök, erre te dühödben többször rácsaptál. Éppen arra járt egy rendőr, aki 34 pontra büntetett meg, mert nyilvánosan verted a töködet.",
 "Ráültél egy ferencvárosi padra, de figyelmetlen voltál, így nem vetted észre, hogy frissen van lefestve. Már elkezdett száradni, amikor eszméltél, de már késő volt, a farzsebedben lévő 56 pontod oda is tapadt.",
 "Renováltad Drakula gróf erdélyi kastélyát, aki fáradozásodért cserébe eltüntette 2 db seedköteles torrented.",
+"A sötétben Matolcsy György ugrott eléd, de nem tudtál a szemébe nézni, ezért elvette 5490 Forintodat.",
 "Részt vettél az éhező vámpírok részére szervezett véradáson, 154 pont jutalmat kaptál érte.",
 "Ruhateregetés közben a láthatatlanná tévő köpenyedet 73 pontodra terítetted rá, amit soha nem találtál meg újra.",
 "Segítséget kértél a ChatGPT-től, hogy kevesebbet seedelj és a tanácsát megfogadva 13 perccel lecsökkent a seedkötelezett torrentjeid hátralévő ideje.",
@@ -285,7 +283,8 @@ var spookySzovegek = [
 "Viccből karfiol ízű cukorkákkal tréfáltad meg a gyerekeket. Ennek következményeként 5 perccel meghosszabbított seed időt kell vállalnod a torrentjeiden.",
 "Zombi Zoltán elvitte 2 seedköteles torrentedet, mert segítettél neki feleséget találni.",
 "Fantasztikus munka volt a Halloween dekorációkkal! Mivel a házad a legfélelmetesebb lett az utcában, most 115 plusz pontot kapsz az év végi díjazáshoz.",
-"Időben meghoztad a szenteltvíz utánpótlást a soron következő ördögűzéshez. A helyi bíboros 296 ponttal jutalmaz meg."
+"Időben meghoztad a szenteltvíz utánpótlást a soron következő ördögűzéshez. A helyi bíboros 296 ponttal jutalmaz meg.",
+"\"Tökötök van, nem lovatok!\" felkiáltással ugrott eléd egy lovagi jelmezbe öltözött eszelős Halloween bolond. Ijedtedben ráüvöltöttél, erre elhagyta az aranyérmékkel teli tarsolyát."
 ];
 
 //--------------------------------------------------------------
@@ -294,8 +293,24 @@ var spookySzovegek = [
 
 function spookyInit(){
 	
+	//----------------------------------------------------------
+	// Böngésző ablak méretének csekkolása
+	//----------------------------------------------------------
+
+	let winSzel = window.innerWidth;
+	let winMaga = window.innerHeight;
+	
+	if (winSzel < 800 || winMaga < 500) {
+		spookyStop();
+		naplozas("Auto Spo0ky leállítva! Ablak méretei túl kicsik! (" + winSzel + "x" + winMaga + " pixel)", 3, 1);
+		return true
+	}
+
+	//----------------------------------------------------------
+
 	spookyStop();
 	naplozas("Auto Spo0ky v" + verzio + " elindult", 1, 1);
+	naplozas("Szövegek száma: " + spookySzovegek.length + " db", 2, 1);
 
 	//--------------------------------------------------------------
 	// Megkérdezzük a felhasználót, milyen
@@ -315,7 +330,7 @@ function spookyInit(){
 	if (hatterKep == "nc") {
 
 		let bgKepekSzama = 7;
-		let randomKep = Math.ceil( Math.random() * bgKepekSzama);
+		let randomKep = veletlenSzamGen(1, bgKepekSzama);
 		document.body.style.cssText = "background: #090909; background-size: contain; background-position: center center; background-repeat: no-repeat; background-attachment: fixed; font-family: Verdana;";
 		document.body.style.backgroundImage = "url('img/bgs/nc/spookyBg-" + randomKep + ".jpg')";
 
@@ -323,7 +338,7 @@ function spookyInit(){
 	} else if (hatterKep == "kp") {
 
 		let bgKepekSzama = 6;
-		let randomKep = Math.ceil( Math.random() * bgKepekSzama);
+		let randomKep = veletlenSzamGen(1, bgKepekSzama);
 		document.body.style.cssText = "background: #090909; background-size: cover; background-position: center center; background-repeat: no-repeat; background-attachment: fixed; font-family: Verdana;";
 		document.body.style.backgroundImage = "url('img/bgs/kp/spookyBg-" + randomKep + ".jpg')";
 
@@ -332,7 +347,7 @@ function spookyInit(){
 	} else {
 
 		let bgKepekSzama = 7;
-		let randomKep = Math.ceil( Math.random() * bgKepekSzama);
+		let randomKep = veletlenSzamGen(1, bgKepekSzama);
 		document.body.style.cssText = "background: #090909; background-size: contain; background-position: center center; background-repeat: no-repeat; background-attachment: fixed; font-family: Verdana;";
 		document.body.style.backgroundImage = "url('img/bgs/nc/spookyBg-" + randomKep + ".jpg')";
 	}
@@ -454,7 +469,7 @@ function addDiv() {
 	
 	// A Spooky PNG fájlok kezdő / vége sorszáma (img/Spo0ky mappa)
 	let minPngNum = 1;
-    let maxPngNum = 179;
+    let maxPngNum = 268;
    
    // Megjelenő Spo0ky pixelben megadott minimális pozíciója (x és y)
 	let minPos = 10;
@@ -579,8 +594,8 @@ function spookyRemove(proc) {
 
 	autoSpookyIdo = setInterval(autoSpooky, veletlenNum);
 
-	naplozas("Eddig " + megjelentSpookyk + " db Spo0kyt jelent meg összesen, ebből " + elkapottSpookyk + " db lett elkapva.", 2, 1);
-	naplozas("Spo0ky megjelenik: " + Math.round(veletlenNum/1000) + " mp", 2, 1);
+	naplozas("Eddig " + megjelentSpookyk + " db Spo0ky jelent meg összesen, ebből " + elkapottSpookyk + " db lett elkapva.", 2, 1);
+	naplozas("Spo0ky megjelenik: " + Math.round(veletlenNum/1000) + " mp", 3, 1);
 	naplozas("-----------------------------------------------------------------------------------");
 }
 
@@ -762,8 +777,6 @@ function naplozas(szoveg, formazas, showDatum) {
 	}
 
 }
-
-//-------------------------------------------------------------------
 
 //---------
 // Indítás
